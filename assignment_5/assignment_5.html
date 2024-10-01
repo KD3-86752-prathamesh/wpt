@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Crash</title>
+</head>
+<body>
+
+    <img src="car.png" alt="car image" id="car" style="width: 200px; height: 150px; margin-bottom: -50px; margin-left: 0px; rotate: 0deg; position: absolute;" >
+    
+
+    <br><br><br>
+    <div style="position: absolute; margin-top: 50px;">
+        <hr style="width:685px;text-align:left;margin-left:-10px">
+        <input type="button" value="Start" id="startcar" onclick="startcar()" style="width: 50px;">
+    <input type="button" value="Stop" id="stopcar" onclick="stopcar()" style="width: 50px;">
+    </div>
+
+    <script>
+        var leftmargin = 0;
+        var topmargin = 0 ; 
+        var degree = 0 ; 
+        var intervalId;
+
+        function startcar() {
+            // Start the car movement using setInterval
+            if (!intervalId) {  // To avoid multiple intervals running simultaneously
+                intervalId = setInterval(car, 50); // Move the car every 10ms
+            }
+
+            function car () {
+                    leftmargin += 10;  // Increment the left margin
+                    var car = document.getElementById("car");
+                    degree = degree + 10;
+                    car.style.marginLeft = leftmargin + "px";
+                    
+                    if(leftmargin>=600){
+                        leftmargin-=10;
+                        
+                        car.style.rotate= degree +"deg" ; 
+                        topmargin += 10 ; 
+                        if(topmargin >=600) {
+                            stopcar() ; 
+                        }
+                        car.style.marginTop = topmargin +"px" ; 
+                    }
+                }
+        }
+
+        function stopcar() {
+            // Stop the car by clearing the interval
+
+            if(topmargin>= 600){
+                var car = document.getElementById("car");
+                car.style.rotate = 180 + "deg";
+            }
+            clearInterval(intervalId);
+            intervalId = null;  // Reset intervalId so that start can be used again
+        }
+    </script>
+
+</body>
+</html>
