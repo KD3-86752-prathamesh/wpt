@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="assignment_3.css">
+
+</head>
+<body>
+<center>
+    
+    <div class="div1">
+        <h1 class="heading">Registration Form</h1>
+
+        <div class="div2">
+
+
+            <div class="divleft">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/r2jOZzFjyXQ?si=fIqJqNtfzZRxunoC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+
+        <div class = "divright">
+
+
+            <table class="table1" id="table1">
+                <tr style="height: 40px;">
+                    <td>Name*:</td>
+                    <td><input type="text" placeholder="Enter Name" id="name" ><div id="errorname" style="color: black; display: flex;"></div></td>
+                </tr>
+                
+                <tr style="height: 40px;">
+                    <td>BirthDate :</td>
+                    <td><input type="date" placeholder="DD/MM/YYYY" id="dob"><div id = "errordob" style="color: black;"></div></td>
+                </tr>
+                <tr style="height: 40px;">
+                    <td>Email :</td>
+                    <td><input type="email" placeholder="abc@gmail.com" id="email" ></td>
+                </tr>
+                <tr style="height: 40px;">
+                    <td>Password :</td>
+                    <td><input type="password" placeholder="Enter Password" id="password"></td>
+                </tr>
+                <tr style="height: 40px;">
+                    <td> Address :</td>
+                    <td><select name="state" class="address" style="border-radius: 5px;" >
+                        <option value = "" selected disabled >Select State</option>
+                        <option value="Andhra Pradesh" name = "Andhra">Andhra Pradesh</option>
+                        <option value="maharashtra">maharashtra</option>
+                        <option value="gujrat">gujrat</option>
+                        <option value="goa">goa</option>
+                        <option value="hariyana">hariyana</option>
+                        <option value="tamilnadu">tamilnadu</option>
+        
+                    </select>
+
+        
+                    <select name="district" class="address"  style="border-radius: 5px;">
+                        <option value = "" selected disabled >Select district</option>
+                        <option value="pune" name = "Andhra"> pune</option>
+                        <option value="mumbai"> mumbai</option>
+                        <option value="chennai"> chennai</option>
+                        <option value="hydrabad"> hydrabad</option>
+                        <option value="karad"> karad</option>
+                    </select>
+        
+                    <select name="city" class="address"  style="border-radius: 5px;">
+                        <option value="" selected disabled >Select city</option>
+                        <option value="pune" name = "Andhra">pune</option>
+                        <option value="pune" name = "Andhra">pune</option>
+        
+                    </select> <div id="errorstate"></div>
+                    <br>
+                    <pre>     state        district     city</pre> 
+                
+                </td>
+                </tr>
+                <tr style="height: 40px;">
+                    <td>Gender*: </td>
+                    <td>
+                        <input type="radio" name="gender" style="width:10%;"> male <input type="radio" name="gender" style="width: 50px;">female <input type="radio" name="gender" style="width: 50px;"> other
+                        <div  id="errorgender"></div>
+
+                     </td>
+                </tr>
+                <tr style="height: 40px;">
+                    <td>Upload Photo:</td>
+                    <td>  <input type="file" id="image" name="image" accept="image/*" id="photo"><div id="errorphoto"></div></td>
+                    
+                </tr>
+                <tr style="height: 40px;" >
+                    <td>Select Course:</td>
+                    <td><select name="Course" id="reftocourse" style="border-radius: 5px;">
+                        <option value="pg-dac">pg-dac</option>
+                        <option value="pg-ditis">pg-ditis</option>
+                        <option value="pg-dbdA">pg-dbda</option>
+                        <option value="pg-dcsf">pg-dcsf</option>
+                    </select></td>
+                </tr>
+                <tr style="height: 40px;">
+                    <td> <input type="button" value="Regisnter" style="width: 100px;"  onclick="validateForm()"> </td>
+
+                    <td><input type="button" value="Clear" style="width: 60px;"> </td>
+                </tr>
+            </table>
+            
+
+           
+        </div>
+        
+    </div>
+        
+    </div>
+</center>
+
+
+
+
+<script>
+
+
+function validateForm() {
+    formvalidationDate() ; 
+    validateFormName() ;
+    validatinggender();
+    validatingphoto();
+}
+
+function formvalidationDate () {
+    var reftodate = document.getElementById ("dob") ; 
+    var reftoerrordate = document.getElementById("errordob") ; 
+    if (reftodate.value == "") {
+        reftoerrordate.innerHTML = " * Please enter dob" ; 
+        reftoerrordate.style.color = "red" ; 
+    }
+    else{
+        console.log(reftodate.value) ;
+        reftoerrordate.innerHTML = "" ; 
+    }
+}
+    function validateFormName() {
+
+        var reftoname = document.getElementById("name");
+        var errorname = document.getElementById("errorname") ; 
+        if(  reftoname.value == "") {
+            errorname.innerHTML = " * Please enter your name";
+            errorname.style.color= "red" ;  
+        }
+        else{
+            console.log(reftoname.value) ; 
+            errorname.innerHTML = "" ; 
+        }
+
+    }
+
+    function validatinggender() {
+    // debugger; 
+    var reftogender = document.getElementsByName("gender");
+    var errortogender = document.getElementById("errorgender");
+    var check = false;
+    
+    // Loop through the gender radio buttons to check if one is selected
+    for (var i = 0; i < reftogender.length; i++) {
+        if (reftogender[i].checked) {
+            check = true;
+            break; // Exit loop once one radio button is selected
+        }
+    }
+
+    // If no radio button is selected, display error message
+    if (!check) {
+        errortogender.innerHTML = "* Please select gender";
+        errortogender.style.color ="red" ; 
+        return false; // Prevent form submission
+    } else {
+        // Clear the error message if validation passes
+        errortogender.innerHTML = "";
+        return true; // Validation successful, allow form submission
+    }
+}
+
+function validatingphoto() {
+    debugger;
+    var photo = document.getElementById("photo");
+    var errorphoto = document.getElementById("errorphoto"); // Corrected this line
+
+    // Check if a file has been uploaded
+    if (photo.files.length == 0) {
+        errorphoto.innerHTML = "* Please upload a photo"; 
+        return false; // Prevent form submission
+    } else {
+        errorphoto.innerHTML = ""; // Clear the error message
+        return true; // Allow form submission
+    }
+}
+
+
+
+</script>
+    
+</body>
+</html>
