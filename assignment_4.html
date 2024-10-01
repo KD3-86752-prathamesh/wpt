@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<body>
+
+    <center>
+        <div class="div1" style="display: block; justify-content: center; align-items:center; margin: 100px;">
+            <div><h1>CALCULATOR</h1></div><hr>
+    
+            <div class="field" style="margin: 50px;">
+                Number 1 : <input type="number" id="number1" placeholder="Number 1" style="margin: 20px; width: 200px;" > <br>
+                Number 2 : <input type="number" id="number2" placeholder="Number 2" style="margin: 20px; width: 200px;"> <br> 
+                Result : <input type="number" id="Result" placeholder="Result" style="margin: 20px;width: 200px;"> 
+                </div>
+    
+            <div class="buttons">
+                <input type="button" value="Addition (+)" onclick="addition()" > 
+                <input type="button" value="sbutraction (-)" onclick="sbutraction()" > 
+                <input type="button" value="multiplication (*)" onclick="multiplication()" >  
+                <input type="button" value="Division (/)" onclick="Division()" >  <br>
+                <input type="button" value="Clear" onclick="clear1()" style="margin: 30px;"> 
+    
+            </div>
+        </div>
+    </center>
+
+    <script>
+
+            var num1 = document.getElementById("number1") ; 
+            var num2 = document.getElementById("number2") ; 
+            var result = document.getElementById("Result") ;
+            
+
+        function addition() {
+            result.value =  parseInt(num1.value) + parseInt(num2.value) ; 
+        }
+
+        function sbutraction() {
+            result.value = num1.value - num2.value ; 
+        }
+
+        function multiplication(){
+            result.value = num1.value * num2.value ;
+        }
+
+        function Division() {
+      
+            if (num2.value != 0 ) {
+                result.value = num1.value / num2.value ; 
+            }
+            else{
+                result.value = -1 ; 
+            }
+        }
+
+        function clear1() {
+            // debugger ;  
+            number1.value = "" ; 
+            number2.value = "" ; 
+            result.value = "" ; 
+           
+        }
+
+    </script>
+
+
+</body>
+</html>
